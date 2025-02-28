@@ -180,4 +180,8 @@ Nach einigen kleinen Problemen funktionierte das System wie geplant:
 - **Mosquitto verarbeitet die Werte korrekt**
 - **Grafana visualisiert die Sensorkurven**
 
-Falls weitere Anpassungen gewünscht sind, kann z. B. die Frequenz der Messwerte geändert oder neue Sensortypen hinzugefügt werden.
+---
+
+## **6. Mitwirkende**
+
+Die Arbeit habe ich in einer Einzelarbeit erledigt.
