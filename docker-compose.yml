@@ -1,0 +1,51 @@
+
+services:
+
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    volumes:
+      - ./broker/mosquitto.conf:/mosquitto/config/mosquitto.conf
+    ports:
+      - "1883:1883"
+
+  sensor1:
+    image: java-sensor:1.0 
+    depends_on:
+      - mosquitto
+    environment:
+      - MQTT_SERVER=mosquitto
+      - MQTT_PUB_TOPIC=sensoren/java1
+      - MQTT_SUB_TOPIC=feedback/java1
+
+  sensor2:
+    image: java-sensor:1.0 
+    depends_on:
+      - mosquitto
+    environment:
+      - MQTT_SERVER=mosquitto
+      - MQTT_PUB_TOPIC=sensoren/java2
+      - MQTT_SUB_TOPIC=feedback/java2
+
+  sensor3:
+    image: java-sensor:1.0 
+    depends_on:
+      - mosquitto
+    environment:
+      - MQTT_SERVER=mosquitto
+      - MQTT_PUB_TOPIC=sensoren/java3
+      - MQTT_SUB_TOPIC=feedback/java3
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana_data:/var/lib/grafana
+    depends_on:
+      - mosquitto
+
+volumes:
+  grafana_data:

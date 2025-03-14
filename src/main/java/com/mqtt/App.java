@@ -1,11 +1,13 @@
 package com.mqtt;
 
 import org.eclipse.paho.client.mqttv3.*;
+import java.util.UUID;
 
 public class App {
     public static void main(String[] args) {
-        String broker = "tcp://localhost:1883"; // MQTT-Broker
-        String clientId = "JavaSinusClient_" + System.currentTimeMillis(); 
+        String server = System.getenv("MQTT_SERVER");
+        final String broker = "tcp://" + server + ":1883";
+        final String clientId = UUID.randomUUID().toString();
 
         // PUB- und SUB-Topics per Argument oder Umgebungsvariable setzen
         String pubTopic = args.length > 0 ? args[0] : System.getenv("MQTT_PUB_TOPIC");
