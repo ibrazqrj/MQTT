@@ -173,15 +173,7 @@ Grafana wurde über `http://localhost:3000` geöffnet.
 
 
 ---
-
-## **5. Fazit**
-Nach einigen kleinen Problemen funktionierte das System wie geplant:
-- **Mehrere Sensoren senden Daten über MQTT**
-- **Mosquitto verarbeitet die Werte korrekt**
-- **Grafana visualisiert die Sensorkurven**
-
----
-## 📌 Testplan: Smart-Home Umgebung
+## 5. 📌 Testplan: Smart-Home Umgebung
 
 ### **Testumgebung**
 - Docker-basierte Umgebung mit **Mosquitto (MQTT-Broker)**, **Java-Sensoren** und **Grafana**.
