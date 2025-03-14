@@ -181,7 +181,27 @@ Nach einigen kleinen Problemen funktionierte das System wie geplant:
 - **Grafana visualisiert die Sensorkurven**
 
 ---
+## 📌 Testplan: Smart-Home Umgebung
+
+### **Testumgebung**
+- Docker-basierte Umgebung mit **Mosquitto (MQTT-Broker)**, **Java-Sensoren** und **Grafana**.
+- Sensoren senden Daten an MQTT, die in Grafana angezeigt werden.
+- Sensoren können über `steuerung/shutdown` gestoppt werden.
+
+### **Testfälle**
+| **Testfall-ID** | **Beschreibung** | **Erwartetes Ergebnis** | **Status** |
+|---------------|----------------|---------------------|-----------|
+| **TC-01** | Sensor1 sendet Daten an MQTT | Mosquitto empfängt die Nachricht | ✅ |
+| **TC-02** | Sensor2 sendet Daten an MQTT | Grafana zeigt die Daten live an | ✅ |
+| **TC-03** | Sensor3 sendet Temperaturwerte | MQTT-Plugin in Grafana empfängt die Werte | ✅ |
+| **TC-04** | MQTT-Broker speichert Nachrichten | `mosquitto_sub` zeigt die letzten Nachrichten | ✅ |
+| **TC-05** | Grafana zeigt Live-Daten an | Dashboard aktualisiert sich automatisch | ✅ |
+| **TC-06** | `steuerung/shutdown` wird gesendet | Alle Sensoren beenden sich | ✅ |
+
+
+
+---
 
 ## **6. Mitwirkende**
 
-Die Arbeit habe ich in einer Einzelarbeit erledigt.
+Die Arbeit habe ich mit Florian R. erledigt.
