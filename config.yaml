@@ -1,0 +1,9 @@
+mqtt:
+  server: tcp://mosquitto:1883
+  topic_path: "sensoren/#"
+
+prometheus:
+  listen_port: 9323
+  namespace: "mqtt"
+  static_labels:
+    instance: "mosquitto-exporter"

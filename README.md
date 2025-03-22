@@ -171,9 +171,14 @@ Grafana wurde über `http://localhost:3000` geöffnet.
 ### **🔻 Screenshot: Grafana mit mehreren Sensorkurven**
 ![image](https://github.com/user-attachments/assets/06ec6d3a-4afd-4c08-b318-022622ffceb1)
 
+<<<<<<< HEAD
 
 ---
 ## 5. 📌 Testplan: Smart-Home Umgebung
+=======
+---
+## 📌 Testplan: Smart-Home Umgebung
+>>>>>>> 7575022 (Letzter Samstag)
 
 ### **Testumgebung**
 - Docker-basierte Umgebung mit **Mosquitto (MQTT-Broker)**, **Java-Sensoren** und **Grafana**.
@@ -190,10 +195,81 @@ Grafana wurde über `http://localhost:3000` geöffnet.
 | **TC-05** | Grafana zeigt Live-Daten an | Dashboard aktualisiert sich automatisch | ✅ |
 | **TC-06** | `steuerung/shutdown` wird gesendet | Alle Sensoren beenden sich | ✅ |
 
+---
 
+## **5. Prometheus Monitoring und Alerts**
+
+### **5.1 Prometheus Einrichtung**
+
+Prometheus wurde konfiguriert, um Sensordaten zu erfassen.
+
+🔻 Screenshot: Prometheus-Abfrage
+https://i.imgur.com/zRSLfll.png
+
+### **5.2 Alerting-Regeln in Prometheus**
+
+Folgende Alerts wurden eingerichtet:
+
+
+  - alert: "Node Down"
+    expr: up == 0
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      summary: "Node {{ $labels.instance }} ist ausgefallen."
+
+  - alert: "Container Unresponsive"
+    expr: time() - container_last_seen > 60
+    for: 1m
+    labels:
+      severity: warning
+    annotations:
+      summary: "Container {{ $labels.name }} hat seit 1 Minute nicht geantwortet."
+
+## **6. Grafana-Visualisierung**
+
+### **6.1 Einrichtung von Dashboards**
+
+Datenquelle: Prometheus hinzufügen
+
+Panels für CPU-Nutzung, Speicher und MQTT-Daten erstellen
+
+🔻 Screenshot: Grafana-Dashboard mit Sensordaten
+https://i.imgur.com/TP95eBb.png
+
+### **6.2 cAdvisor zur Überwachung der Container**
+
+🔻 Screenshot: cAdvisor Container-Monitoring
+https://i.imgur.com/qyYmysR.png
+
+## **7. Probleme und Lösungen**
+
+### **7.1 Mosquitto-Exporter Fehler**
+
+Der Mosquitto-Exporter ließ sich nicht starten:
+
+Error: "open config.yaml: no such file or directory"
+
+### **7.2 Prometheus erkennt nicht alle Services**
+
+Die Sensoren wurden von Prometheus nicht erfasst. Nach einem Neustart aller Container war das Problem gelöst.
+
+### **7.3 Grafana-Dashboards ohne Daten**
+
+Anfangs wurden keine Daten angezeigt, weil Prometheus nicht korrekt mit Grafana verknüpft war. Nach dem **Setzen von **scrape_configs funktionierte es.
+
+## **8. Fazit**
+
+- MQTT-Sensoren senden erfolgreich Daten ✅
+- Prometheus überwacht Sensoren & Container ✅
+- Alerts wurden erfolgreich eingerichtet ✅
+- Grafana visualisiert die Daten live ✅
+
+Dieses Projekt hat erfolgreich MQTT-Daten erfasst, visualisiert und überwacht. Die Alerts ermöglichen eine schnelle Reaktion auf Ausfälle.
 
 ---
 
-## **6. Mitwirkende**
+## **8. Mitwirkende**
 
 Die Arbeit habe ich mit Florian R. erledigt.

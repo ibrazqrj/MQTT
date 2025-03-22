@@ -1,0 +1,18 @@
+groups:
+  - name: container_alerts
+    rules:
+      - alert: "Node Down"
+        expr: up == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Node {{ $labels.instance }} ist ausgefallen."
+
+      - alert: "Container Unresponsive"
+        expr: time() - container_last_seen > 60
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Container {{ $labels.name }} hat seit 1 Minute nicht geantwortet."

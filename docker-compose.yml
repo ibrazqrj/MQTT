@@ -9,13 +9,15 @@ services:
     ports:
       - "1883:1883"
 
-    mosquitto-exporter:
-    image: ekofr/mqtt-exporter
+  mosquitto-exporter:
+    image: hikhvar/mqtt2prometheus
     container_name: mosquitto-exporter
     ports:
       - "9323:9323"
+    volumes:
+      - "/home/ibrazqrj/Documents/MQTT/exporter-config.yaml:/config/config.yaml"
     environment:
-      - MQTT_SERVER=mosquitto:1883
+      - MQTT_BROKER=tcp://mosquitto:1883
     depends_on:
       - mosquitto
 
