@@ -171,11 +171,6 @@ Grafana wurde über `http://localhost:3000` geöffnet.
 ### **🔻 Screenshot: Grafana mit mehreren Sensorkurven**
 ![image](https://github.com/user-attachments/assets/06ec6d3a-4afd-4c08-b318-022622ffceb1)
 
-<<<<<<< HEAD
-
----
-## 5. 📌 Testplan: Smart-Home Umgebung
-=======
 ---
 ## 📌 Testplan: Smart-Home Umgebung
 >>>>>>> 7575022 (Letzter Samstag)
@@ -204,7 +199,7 @@ Grafana wurde über `http://localhost:3000` geöffnet.
 Prometheus wurde konfiguriert, um Sensordaten zu erfassen.
 
 🔻 Screenshot: Prometheus-Abfrage
-https://i.imgur.com/zRSLfll.png
+![image](https://github.com/user-attachments/assets/436e44bc-7be7-41a9-a07c-bc68fde6ecca)
 
 ### **5.2 Alerting-Regeln in Prometheus**
 
@@ -235,13 +230,13 @@ Datenquelle: Prometheus hinzufügen
 
 Panels für CPU-Nutzung, Speicher und MQTT-Daten erstellen
 
-🔻 Screenshot: Grafana-Dashboard mit Sensordaten
-https://i.imgur.com/TP95eBb.png
+🔻 Screenshot: Grafana-Dashboard
+![image](https://github.com/user-attachments/assets/17dc33be-6ec1-4e68-9c56-6ec02602f8b9)
 
 ### **6.2 cAdvisor zur Überwachung der Container**
 
 🔻 Screenshot: cAdvisor Container-Monitoring
-https://i.imgur.com/qyYmysR.png
+![image](https://github.com/user-attachments/assets/ff7ef2e1-1a82-4860-b85f-4200a00fc3a3)
 
 ## **7. Probleme und Lösungen**
 
